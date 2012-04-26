@@ -2,7 +2,7 @@
 {% block title %}{% if person %}{{ person.name }} {{ person.surname }}{% endif %}{% endblock %}
 {% block content %}
 {% if person %}
-<div style="float:right;width:300px;">
+<div class="contacts">
     <h3>Contacts:</h3>
     <h4>Email</h4> {{ person.email }}
     {% if person.jabber %}
@@ -20,5 +20,7 @@
 <h3>{{ person.birth_date|date:"m.d.Y" }}</h3>
 <h4>Bio:</h4>
 {{ person.bio }}
+{% else %}
+Blank page
 {% endif %}
 {% endblock %}

@@ -14,4 +14,5 @@ class HttpTest(TestCase):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
         self.assertTrue('person' in response.context)
-        self.assertTrue(response.context['person'])
+        person = response.context['person']
+        self.assertTrue(person.name)
