@@ -14,3 +14,6 @@ class Entry(models.Model):
     def __unicode__(self):
         return '[%s] "%s %s"' % (self.dtime.strftime('%d.%m.%Y %H:%M:%S'),
                 self.method, self.path)
+
+    class Meta:
+        verbose_name_plural = "entries"
