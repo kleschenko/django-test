@@ -8,3 +8,6 @@ run:
 
 syncdb:
 	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=django_test.settings $(MANAGE) syncdb --noinput
+
+migrate:
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=django_test.settings $(MANAGE) migrate --noinput

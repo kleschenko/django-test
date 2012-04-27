@@ -9,7 +9,8 @@ class LogRequestsMiddleware(object):
         keys = sorted(request.META.keys())
         meta = []
         for key in keys:
-            meta.append('%s: %s' % (key, request.META[key]))
+            if key.startswith('HTTP'):
+                meta.append('%s: %s' % (key, request.META[key]))
         entry = Entry(method=request.method,
-                path=request.path, meta='\n'.join(meta))
+                path=request.path, meta='<br>'.join(meta))
         entry.save()

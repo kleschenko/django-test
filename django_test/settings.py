@@ -87,6 +87,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'contacts',
     'logs',
+    'south',
 )
 
 LOGGING = {
