@@ -14,3 +14,4 @@ class LogRequestsMiddleware(object):
         entry = Entry(method=request.method,
                 path=request.path, meta='<br>'.join(meta))
         entry.save()
+        return None
