@@ -7,4 +7,5 @@
         <li><a href="{{ entry.get_absolute_url }}">[{{ entry.dtime|date:"d.m.Y H:i:s" }}] "{{ entry.method }} {{ entry.path }}"</a></li>
         {% endfor %}
     </ul>
+<p>Go to <a href="{% url home %}">home</a></p>
 {% endblock %}
