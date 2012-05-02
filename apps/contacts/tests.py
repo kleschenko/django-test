@@ -16,3 +16,9 @@ class HttpTest(TestCase):
         self.assertTrue('person' in response.context)
         person = response.context['person']
         self.assertTrue(person.name)
+
+    def test_contacts_edit(self):
+        self.client.login(username='admin', password='admin')
+        response = self.client.get(reverse('contacts_edit'), follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('form' in response.context)

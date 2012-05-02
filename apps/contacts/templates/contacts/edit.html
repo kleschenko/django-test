@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{% if person %}{{ person.name }} {{ person.surname }}{% endif %}{% endblock %}
+{% block content %}
+{% if form %}
+<form  action="" method="post" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {% for e in form.non_field_errors %}
+    <div class="error">{{ e }}</div><br />
+    {% endfor %}
+    <div class="contacts">
+        <h3>Contacts:</h3>
+        <h4>Email</h4> {{ form.email }}
+        <h4>Jabber</h4> {{ form.jabber }}
+        <h4>Skype</h4> {{ form.skype }}
+        <h4>Other contacts</h4> {{ form.other_contacts }}
+        <h4>Bio:</h4>
+        {{ form.bio }}
+    </div>
+    <h1>{{ form.name }}</h1>
+    <h1>{{ form.surname }}</h1>
+    <h3>{{ form.birth_date }}</h3>
+    <h4>Photo:</h4>
+    {{ form.photo }}
+    <img src="{{ MEDIA_URL }}{{ form.photo.value }}" width="330" />
+    <div style="clear:both;"></div>
+    <input type="submit" class="go_enter" value="Save" /> 
+</form>
+{% else %}
+Blank page
+{% endif %}
+<p>You can also <a href="{% url logs %}">view logs</a> or login into <a href="{% url admin:index %}">admin page</a>.</p>
+{% endblock %}
