@@ -4,6 +4,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import Http404
 from contacts.models import Person
+from contacts.forms import ContactsEditForm
 
 
 class PersonView(TemplateView):
@@ -20,6 +21,7 @@ class PersonView(TemplateView):
 
 class PersonUpdateView(UpdateView):
 
+    form_class = ContactsEditForm
     template_name = 'contacts/edit.html'
     success_url = '/'
 

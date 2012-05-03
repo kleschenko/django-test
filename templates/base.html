@@ -6,11 +6,31 @@
     <style type="text/css">
         .container { margin:auto; width:640px; }
         .contacts { float:right;width:300px; }
+        .error { color:#e33; }
+        h3 { margin:0px; }
+        .menu li { display:inline-block; }
+        .menu_right { float:right; }
     </style>
+    {% block head %}{% endblock %}
   </head>
 
   <body>
     <div class="container">
+    <div class="menu">
+        <ul>
+            <li><a href="{% url home %}">Home</a></li>
+            <li><a href="{% url logs %}">Logs</a></li>
+            {% if user.is_staff %}
+            <li><a href="{% url contacts_edit %}">Edit</a></li>
+            <li><a href="{% url admin:index %}">Admin</a></li>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <li class="menu_right"><a href="{% url logout %}?next=/">Logout</a></li>
+            {% else %}
+            <l class="menu_right"><a href="{% url login %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
       {% block content %}
       {% endblock %}
       <small>Site DEBUG variable is set to: {{ settings.DEBUG }}</small>

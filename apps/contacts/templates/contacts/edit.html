@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% block title %}{% if person %}{{ person.name }} {{ person.surname }}{% endif %}{% endblock %}
+{% block head %}
+<script type="text/javascript" src="{{ STATIC_URL }}contacts/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="{{ STATIC_URL }}contacts/js/edit.js"></script> 
+{% endblock %}
 {% block content %}
 {% if form %}
 <form  action="" method="post" enctype='multipart/form-data'>
@@ -9,24 +13,23 @@
     {% endfor %}
     <div class="contacts">
         <h3>Contacts:</h3>
-        <h4>Email</h4> {{ form.email }}
-        <h4>Jabber</h4> {{ form.jabber }}
-        <h4>Skype</h4> {{ form.skype }}
-        <h4>Other contacts</h4> {{ form.other_contacts }}
-        <h4>Bio:</h4>
-        {{ form.bio }}
     </div>
-    <h1>{{ form.name }}</h1>
-    <h1>{{ form.surname }}</h1>
-    <h3>{{ form.birth_date }}</h3>
-    <h4>Photo:</h4>
-    {{ form.photo }}
-    <img src="{{ MEDIA_URL }}{{ form.photo.value }}" width="330" />
+    <div class="main">
+        <h3>Info:</h3>
+        {% for field in form %}
+        <div class="input">
+            {% if field.errors %}
+            <div class="error">{{ field.errors }}</div>
+            {% endif %}
+            <p>{{ field.label }}: {{ field }}</p>
+        </div>
+        {% endfor %}
+        <div class="input"><img src="{{ MEDIA_URL }}{{ form.photo.value }}" width="330" /></div>
+    </div>
     <div style="clear:both;"></div>
-    <input type="submit" class="go_enter" value="Save" /> 
+    <input type="submit" value="Save" /> <a href="{% url home %}">Cancel</a>
 </form>
 {% else %}
 Blank page
 {% endif %}
-<p>You can also <a href="{% url logs %}">view logs</a> or login into <a href="{% url admin:index %}">admin page</a>.</p>
 {% endblock %}
