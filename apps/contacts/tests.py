@@ -16,3 +16,8 @@ class HttpTest(TestCase):
         self.assertTrue('person' in response.context)
         person = response.context['person']
         self.assertTrue(person.name)
+
+    def test_context(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('settings' in response.context)

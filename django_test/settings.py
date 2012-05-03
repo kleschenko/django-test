@@ -68,7 +68,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
-        'django_test.context_processors.django_settings',
+        'contacts.context_processors.django_settings',
 )
 
 ROOT_URLCONF = 'django_test.urls'
@@ -93,7 +93,6 @@ INSTALLED_APPS = (
     'contacts',
     'logs',
     'south',
-    'django_test',
 )
 
 LOGGING = {
