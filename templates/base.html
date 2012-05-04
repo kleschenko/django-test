@@ -6,7 +6,9 @@
     <style type="text/css">
         .container { margin:auto; width:640px; }
         .contacts { float:right;width:300px; }
-        .error { color:#e33; }
+        .error { color:#e33; position:relative; top:0.5em; font-size:0.7em;}
+        .error ul { padding:0px; }
+        .error li { display:inline-block; }
         h3 { margin:0px; }
         .menu li { display:inline-block; }
         .menu_right { float:right; }
@@ -27,7 +29,7 @@
             {% if user.is_authenticated %}
             <li class="menu_right"><a href="{% url logout %}?next=/">Logout</a></li>
             {% else %}
-            <l class="menu_right"><a href="{% url login %}">Login</a></li>
+            <li class="menu_right"><a href="{% url login %}">Login</a></li>
             {% endif %}
         </ul>
     </div>
